@@ -190,6 +190,18 @@ function MoneyMaker() {
     return () => clearInterval(interval);
   }, [viewerCount]);
 
+  useEffect(() => {
+    document.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+    });
+    document.addEventListener("keydown", (e) => {
+      e.preventDefault();
+      if (e.keyCode === 123) {
+        return false;
+      }
+    });
+  }, []);
+
   // const cardRef = useRef(null);
   // const handleMouseMove = (e) => {
   //   const card = cardRef.current;
