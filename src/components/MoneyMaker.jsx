@@ -275,22 +275,19 @@ function MoneyMaker() {
             </div>
           </div>
         )}
-        {/* <iframe
-          style={{ width: "100%", height: "100%" }}
-          src="https://www.youtube.com/embed/FWZyNzzYlvs?si=oKdseNQUnAfs_lmf&amp;controls=0"
-          title="Video BetPlay Money Maker"
-          frameBorder="0"
-          allowFullScreen
-          ref={videoRef}
-          onClick={togglePlayPause}
-        ></iframe> */}
-
+        <div
+          className="custom-progress-bar"
+          style={{ display: lastVideoProgress !== null ? "none" : "block" }}
+        >
+          <div ref={progressBarRef} className="progress"></div>
+        </div>
         <video
           ref={videoRef}
           src={Video}
           preload="metadata"
           playsInline
           onClick={togglePlayPause}
+          style={{ zIndex: 0 }}
         ></video>
         <button
           className={`fullscreen-button ${!isPlaying && "pausedVideo"}`}
@@ -298,12 +295,6 @@ function MoneyMaker() {
         >
           {isFullscreen ? <BsFullscreenExit /> : <BsFullscreen />}
         </button>
-        <div
-          className="custom-progress-bar"
-          style={{ display: lastVideoProgress !== null ? "none" : "block" }}
-        >
-          <div ref={progressBarRef} className="progress"></div>
-        </div>
       </div>
 
       <div className="peopleWatchingContainer">

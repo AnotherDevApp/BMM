@@ -40,25 +40,13 @@ p {
   border: 3px solid orange;
   border-radius: 12px;
   box-shadow: 0 0 15px orange;
+  z-index: 0;
 }
 
 video {
   width: 100%;
   height: 100%;
   display: block;
-}
-
-#cover-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-#video:not(.show-video) {
-  display: none;
 }
 
 .playPauseContainer {
@@ -108,6 +96,7 @@ video {
   left: 0;
   overflow: hidden;
   opacity: 0.8;
+  z-index: 1;
 }
 
 .progress {
@@ -240,7 +229,7 @@ body::-webkit-scrollbar-track {
   position: absolute;
   bottom: 15px;
   right: 20px;
-  z-index: 2;
+  z-index: 1;
   display: none;
   opacity: 0;
   transition: opacity 0.5s ease;
