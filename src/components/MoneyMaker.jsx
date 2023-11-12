@@ -6,6 +6,8 @@ import { FaPlayCircle } from "react-icons/fa";
 import "./styles.css";
 import Logo from "./Logo";
 import { Cards } from "./Cards";
+import Video from "/src/assets/video.mp4";
+import Portada from "/src/assets/portada.png";
 
 function MoneyMaker() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -232,7 +234,7 @@ function MoneyMaker() {
           <div className="imageContainer">
             <img
               ref={coverImageRef}
-              src="/src/assets/portada.png"
+              src={Portada}
               alt="Portada del video"
               onClick={togglePlayPause}
               style={{
@@ -273,7 +275,7 @@ function MoneyMaker() {
 
         <video
           ref={videoRef}
-          src="/src/assets/video.mp4"
+          src={Video}
           preload="metadata"
           playsInline
           onClick={togglePlayPause}

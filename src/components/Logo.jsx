@@ -1,9 +1,10 @@
+import LogoBMM from "/src/assets/logo.png";
 import "./styles.css";
 
 function Logo() {
   return (
     <div className="logoContainer">
-      <img src="/src/assets/Logo-money-maker.png" alt="Logo" className="logo" />
+      <img src={LogoBMM} alt="Logo" className="logo" />
     </div>
   );
 }
