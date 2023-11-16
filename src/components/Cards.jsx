@@ -3,75 +3,81 @@ import { MdCancel } from "react-icons/md";
 import "./styles.css";
 
 export const Cards = () => {
+  const cardContent = [
+    {
+      periodo: "SEMANAL",
+      valor: "25$",
+      valorPromocion: "$15",
+      tiempo: "semana",
+      hoja: false,
+      tecnica: false,
+    },
+    {
+      periodo: "MENSUAL",
+      valor: "47$",
+      valorPromocion: "$27",
+      tiempo: "mes",
+      hoja: false,
+      tecnica: false,
+    },
+    {
+      periodo: "TRIMESTRAL",
+      valor: "97$",
+      valorPromocion: "$57",
+      tiempo: "trimestre",
+      hoja: true,
+      tecnica: true,
+    },
+  ];
   return (
     <div className="cardsContainer">
-      <div className="card">
-        <div className="card-content">
-          <h2>TRIMESTRAL</h2>
-          <p className="card-subtitle">
-            $57 <span>/Trimestre</span>
-          </p>
-          <ul role="list" className="lista">
-            <li className="unitList">
-              <BsCheckCircleFill fontSize={20} color="#00ff00" />
-              Señales en Telegram
-            </li>
-            <li className="unitList">
-              <BsCheckCircleFill fontSize={20} color="#00ff00" />
-              Hoja del cálculo de Gestión Bancaria
-            </li>
-            <li className="unitList">
-              <BsCheckCircleFill fontSize={20} color="#00ff00" />
-              Técnica de apalancamiento
-            </li>
-            <li className="unitList">
-              <BsCheckCircleFill fontSize={20} color="#00ff00" />
-              Soporte Premium
-            </li>
-          </ul>
-          <a
-            className="payButton"
-            href="https://premiumpay.pro/2393/Betplaymoneymaker"
-          >
-            ¡Lo quiero!
-          </a>
-        </div>
-      </div>
-
-      <div className="cardContainer">
-        <div className="card">
+      {cardContent.map((card, index) => (
+        <div key={index} className="card">
           <div className="card-content">
-            <h2>MENSUAL</h2>
+            <h2>{card.periodo}</h2>
+            <p className="highValueContent">
+              De <span className="highValue">{card.valor}</span> por solo:{" "}
+            </p>
             <p className="card-subtitle">
-              $27 <span>/Mes</span>
+              {card.valorPromocion} <span>/por {card.tiempo}</span>
             </p>
             <ul role="list" className="lista">
               <li className="unitList">
                 <BsCheckCircleFill size={20} color="#00ff00" />
-                Señales en Telegram
+                <p className="unitListPar">Señales en Telegram</p>
               </li>
-              <li className="unitList cancelledItem">
-                <MdCancel size={20} color="red" />
-                Hoja del cálculo de Gestión Bancaria
+              <li className="unitList">
+                {card.hoja ? (
+                  <BsCheckCircleFill size={20} color="#00ff00" />
+                ) : (
+                  <MdCancel size={20} color="red" />
+                )}
+                <p className="unitListPar">
+                  Hoja del cálculo de Gestión Bancaria
+                </p>
               </li>
-              <li className="unitList cancelledItem">
-                <MdCancel size={20} color="red" />
-                Técnica de apalancamiento
+              <li className="unitList">
+                {card.tecnica ? (
+                  <BsCheckCircleFill size={20} color="#00ff00" />
+                ) : (
+                  <MdCancel size={20} color="red" />
+                )}
+                <p className="unitListPar">Técnica de apalancamiento</p>
               </li>
               <li className="unitList">
                 <BsCheckCircleFill size={20} color="#00ff00" />
-                Soporte Premium
+                <p className="unitListPar">Soporte Premium</p>
               </li>
             </ul>
             <a
               className="payButton"
               href="https://premiumpay.pro/2393/Betplaymoneymaker"
             >
-              ¡Lo quiero!
+              QUIERO TENER GREENS
             </a>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };

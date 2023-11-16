@@ -8,13 +8,17 @@ import Logo from "./Logo";
 import { Cards } from "./Cards";
 import Video from "/src/assets/video.mp4";
 import Portada from "/src/assets/portada.png";
+import { About } from "./About";
+import { Winners } from "./Winners";
+import { PaymentButton } from "./PaymentButton";
+import { Warranty } from "./Warranty";
 
 function MoneyMaker() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasShownCover, setHasShownCover] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [lastVideoProgress, setLastVideoProgress] = useState(null);
-  const [showCardComponent, setShowCardComponent] = useState(false);
+  // const [showCardComponent, setShowCardComponent] = useState(false);
   const [viewerCount, setViewerCount] = useState(
     Math.floor(Math.random() * (850 - 621 + 1)) + 621
   );
@@ -81,9 +85,9 @@ function MoneyMaker() {
       progress = 95 + ((currentTime - duration * 0.85) / (duration * 0.15)) * 5;
     }
 
-    if (currentTime > 613) {
-      setShowCardComponent(true);
-    }
+    // if (currentTime > 10) {
+    //   setShowCardComponent(true);
+    // }
 
     progressBar.style.width = progress + "%";
     progressBar.style.transition = "width 0.5s linear";
@@ -219,94 +223,183 @@ function MoneyMaker() {
   // };
 
   return (
-    <div>
-      <Logo />
-      <div className="titleContainer">
-        <h1>
-          Por tiempo limitado:
-          <br />
-          <span>Nueva Inteligencia Artificial</span> encuentra partidos de alto
-          nivel para saques de esquina y tiene una{" "}
-          <span>precisión del 83.57%</span>
-        </h1>
-      </div>
-      <div className="video-container">
-        {!isPlaying && lastVideoProgress === null && (
-          <div className="playPauseContainer">
-            <button className="control-button" onClick={togglePlayPause}>
-              {isPlaying ? (
-                <AiOutlinePauseCircle className="pause-play-Button" />
-              ) : (
-                <FaPlayCircle className="pause-play-Button" />
-              )}
-            </button>
-          </div>
-        )}
-        {!isPlaying && !hasShownCover && lastVideoProgress === null && (
-          <div className="imageContainer">
-            <img
-              ref={coverImageRef}
-              src={Portada}
-              alt="Portada del video"
-              onClick={togglePlayPause}
-              style={{
-                display: isPlaying ? "none" : "flex",
-                width: "100%",
-                height: "auto",
-              }}
-            />
-          </div>
-        )}
-
-        {!isPlaying && lastVideoProgress !== null && (
-          <div className="reanudarVideoContainer">
-            <p className="reanudarTitle">
-              ¿Deseas continuar desde donde lo dejaste?
-            </p>
-            <div className="buttonControl">
-              <button onClick={continueVideo} className="buttonControlUnit">
-                <AiOutlinePlayCircle className="controlButtonIcon" />
-                Continuar
-              </button>
-              <button onClick={restartVideo} className="buttonControlUnit">
-                <MdOutlineRestartAlt className="controlButtonIcon" />
-                Reiniciar
+    <>
+      <div
+        style={{
+          padding: "16px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Logo />
+        <div className="titleContainer">
+          <h1>
+            Por tiempo limitado:
+            <br />
+            <span>Nueva Inteligencia Artificial</span> encuentra partidos de
+            alto nivel para saques de esquina y tiene una{" "}
+            <span>precisión del 83.57%</span>
+          </h1>
+        </div>
+        <div className="video-container">
+          {!isPlaying && lastVideoProgress === null && (
+            <div className="playPauseContainer">
+              <button className="control-button" onClick={togglePlayPause}>
+                {isPlaying ? (
+                  <AiOutlinePauseCircle className="pause-play-Button" />
+                ) : (
+                  <FaPlayCircle className="pause-play-Button" />
+                )}
               </button>
             </div>
+          )}
+          {!isPlaying && !hasShownCover && lastVideoProgress === null && (
+            <div className="imageContainer">
+              <img
+                ref={coverImageRef}
+                src={Portada}
+                alt="Portada del video"
+                onClick={togglePlayPause}
+                style={{
+                  display: isPlaying ? "none" : "flex",
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+            </div>
+          )}
+
+          {!isPlaying && lastVideoProgress !== null && (
+            <div className="reanudarVideoContainer">
+              <p className="reanudarTitle">
+                ¿Deseas continuar desde donde lo dejaste?
+              </p>
+              <div className="buttonControl">
+                <button onClick={continueVideo} className="buttonControlUnit">
+                  <AiOutlinePlayCircle className="controlButtonIcon" />
+                  Continuar
+                </button>
+                <button onClick={restartVideo} className="buttonControlUnit">
+                  <MdOutlineRestartAlt className="controlButtonIcon" />
+                  Reiniciar
+                </button>
+              </div>
+            </div>
+          )}
+          <div
+            className="custom-progress-bar"
+            style={{ display: lastVideoProgress !== null ? "none" : "block" }}
+          >
+            <div ref={progressBarRef} className="progress"></div>
           </div>
-        )}
-        <div
-          className="custom-progress-bar"
-          style={{ display: lastVideoProgress !== null ? "none" : "block" }}
-        >
-          <div ref={progressBarRef} className="progress"></div>
+          <video
+            ref={videoRef}
+            src={Video}
+            preload="metadata"
+            playsInline
+            onClick={togglePlayPause}
+            style={{ zIndex: 0 }}
+          ></video>
+          <button
+            className={`fullscreen-button ${!isPlaying && "pausedVideo"}`}
+            onClick={handleFullscreenToggle}
+          >
+            {isFullscreen ? <BsFullscreenExit /> : <BsFullscreen />}
+          </button>
         </div>
-        <video
-          ref={videoRef}
-          src={Video}
-          preload="metadata"
-          playsInline
-          onClick={togglePlayPause}
-          style={{ zIndex: 0 }}
-        ></video>
-        <button
-          className={`fullscreen-button ${!isPlaying && "pausedVideo"}`}
-          onClick={handleFullscreenToggle}
+
+        <div className="peopleWatchingContainer">
+          <h2 className="peopleWatching">
+            <span>{viewerCount}</span> personas están viendo este vídeo
+          </h2>
+        </div>
+
+        <Winners />
+        <PaymentButton />
+      </div>
+      <div className="aboutSection">
+        <About />
+        <PaymentButton />
+      </div>
+
+      <div
+        style={{
+          padding: "16px",
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: "40px",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "30px",
+            color: "orange",
+            textShadow: "0 0 10px orange",
+            marginTop: "50px",
+          }}
         >
-          {isFullscreen ? <BsFullscreenExit /> : <BsFullscreen />}
-        </button>
-      </div>
-
-      <div className="peopleWatchingContainer">
-        <h2 className="peopleWatching">
-          <span>{viewerCount}</span> personas están viendo este vídeo
+          OFERTA IMPERDIBLE
         </h2>
+        <h3
+          style={{
+            fontSize: "25px",
+            color: "white",
+            textShadow: "0 0 10px orange",
+            marginBottom: "50px",
+          }}
+        >
+          ELIGE TU PLAN A CONTINUACIÓN
+        </h3>
+        <Cards />
       </div>
 
-      {showCardComponent && <Cards />}
+      <div
+        style={{
+          padding: "16px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          marginTop: "60px",
+          backgroundColor: "#040412",
+        }}
+      >
+        <h2
+          className="warrantyTitle"
+          style={{
+            fontSize: "35px",
+            color: "orange",
+            textShadow: "0 0 7px orange",
+            margin: "0",
+            marginTop: "40px",
+          }}
+        >
+          GARANTÍA
+        </h2>
+        <h3
+          className="warrantyTitle"
+          style={{
+            fontSize: "30px",
+            color: "#040412",
+            textShadow: "0 0 10px orange",
+            marginTop: "10px",
+            marginBottom: "50px",
+            backgroundColor: "orange",
+            padding: "8px",
+          }}
+        >
+          INCONDICIONAL
+        </h3>
+        <Warranty />
+        <PaymentButton />
+      </div>
 
       <div className="footer">
-        <p>Copyright 2023 - BetPlay Money Maker &reg;</p>
+        <p>Copyright 2023 - Betplay Money Maker</p>
         <p>
           Este sitio no está afiliado a ninguna plataforma de anuncios. Todo el
           contenido es responsabilidad exclusiva nuestra. Aviso Legal: Todas las
@@ -315,7 +408,7 @@ function MoneyMaker() {
           garantía de resultados
         </p>
       </div>
-    </div>
+    </>
   );
 }
 

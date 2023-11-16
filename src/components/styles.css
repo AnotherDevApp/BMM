@@ -1,6 +1,10 @@
 .titleContainer {
   margin-bottom: 25px;
+  display: flex;
   max-width: 900px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 @media (min-width: 480px) {
   .titleContainer {
@@ -23,11 +27,17 @@ p {
 }
 
 .footer {
-  display: block;
-  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 40px 0;
+  justify-content: center;
+  align-items: center;
 }
 .footer p {
-  font-size: 10px;
+  max-width: 900px;
+  font-size: 15px;
+  margin: 0;
 }
 
 .video-container {
@@ -110,18 +120,6 @@ video::-webkit-media-controls {
   display: none;
 }
 
-body::-webkit-scrollbar {
-  width: 6px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: orange;
-}
-
-body::-webkit-scrollbar-track {
-  background: black;
-}
-
 @media (max-width: 480px) {
   h1 {
     font-size: 24px;
@@ -140,7 +138,7 @@ body::-webkit-scrollbar-track {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom right, #0b325f, #d25f12);
+  background: linear-gradient(to top right, #00008c, #853500);
 }
 .reanudarTitle {
   padding: 0px;
@@ -246,20 +244,9 @@ body::-webkit-scrollbar-track {
 }
 
 .cardsContainer {
-  max-width: 900px;
-  margin: 40px 0 40px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  align-items: center;
-}
-
-@media (min-width: 680px) {
-  .cardsContainer {
-    flex-direction: row;
-    gap: 40px;
-  }
+  display: grid;
+  gap: 40px;
+  justify-items: center;
 }
 
 ul {
@@ -279,12 +266,27 @@ ul {
 }
 
 .card {
-  max-width: 400px;
+  width: 100%;
   border-radius: 8px;
   border: solid 3px orange;
   box-shadow: 0 0 15px orange, inset 0 0 15px orange;
-  background-color: #00142b95;
+  background-color: #040412;
   animation: borderBlink 0.5s infinite;
+}
+@media (min-width: 680px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+@media (min-width: 920px) {
+  .card {
+    max-width: 350px;
+  }
+  .cardsContainer {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 90%;
+  }
 }
 
 .card-content {
@@ -294,6 +296,22 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.card-content h2 {
+  font-size: 30px;
+}
+
+.highValueContent {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.highValue {
+  color: red;
+  text-shadow: none;
+  font-size: 20px;
+  text-decoration: line-through 0.3px;
 }
 .lista {
   padding: 0;
@@ -309,59 +327,253 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
-  font-size: 14px;
+  justify-content: center;
+  gap: 7px;
 }
 
-@media (min-width: 480px) {
-  .unitList {
-    font-size: 16px;
-  }
+.unitListPar {
+  margin: 0;
+  font-size: 15px;
 }
 
 .payButton {
   text-decoration: none;
-  color: #00142b;
+  color: #040412;
   font-weight: 900;
   background-color: rgb(255, 183, 50);
   box-shadow: 0px 5px 15px -5px orange;
   border-radius: 5px;
   display: block;
   margin: 20px 0;
-  padding: 8px 12px;
-  width: 50%;
+  padding: 10px 14px;
+  max-width: 90%;
+  font-size: 14px;
 }
 
 .payButton:hover {
   background-color: orange;
 }
+@media (min-width: 480px) {
+  .unitList {
+    font-size: 20px;
+  }
+}
 
 .card-subtitle {
-  font-size: 30px;
+  font-size: 40px;
   margin: 10px 0;
   color: orange;
   text-shadow: 0 0 10px orange;
 }
 
 .card-subtitle span {
-  font-size: 18px;
+  font-size: 16px;
   color: white;
 }
 
 .peopleWatchingContainer {
-  margin: 25px 0;
-}
-@media (min-width: 480px) {
-  .peopleWatchingContainer {
-    margin: 40px 0;
-  }
+  margin-top: 40px;
 }
 
 .peopleWatching {
-  font-size: 16px;
+  font-size: 20px;
+  margin: 0;
 }
 @media (min-width: 480px) {
   .peopleWatching {
     font-size: 25px;
   }
+}
+
+/* About */
+
+.aboutSection {
+  background-color: #040412;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+.aboutTitle {
+  font-size: 7.5vw;
+  margin: 0;
+  margin-top: 30px;
+}
+
+.aboutText {
+  margin: 0;
+  font-size: 4.3vw;
+}
+
+@media (min-width: 420px) {
+  .aboutContainer {
+    margin-bottom: 60px;
+  }
+  .aboutSection {
+    padding: 16px 5vw;
+  }
+  .aboutTitle {
+    font-size: 5vw;
+  }
+  .aboutText {
+    font-size: 3.5vw;
+  }
+}
+
+@media (min-width: 680px) {
+  .aboutContainer {
+    align-items: start;
+    text-align: start;
+  }
+  .aboutTitle {
+    font-size: 3.9vw;
+  }
+  .aboutText {
+    font-size: 2.8vw;
+  }
+}
+
+@media (min-width: 920px) {
+  .aboutSection {
+    padding: 16px 10vw;
+  }
+  .aboutTitle {
+    font-size: 2.5vw;
+  }
+  .aboutText {
+    font-size: 1.5vw;
+  }
+}
+@media (min-width: 1200px) {
+  .aboutSection {
+    padding: 16px 16vw;
+  }
+}
+
+.winnersContainer {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.winnersTitle {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.winnerImageContainer {
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+}
+
+.winnerImageContainer img {
+  max-width: 100%;
+}
+
+@media (min-width: 480px) {
+  .winnersTitle {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+  .winnerImageContainer img {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 620px) {
+  .winnerImageContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 920px) {
+  .winnerImageContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Payment component */
+
+.paymentButton {
+  text-decoration: none;
+  color: #040412;
+  font-weight: 900;
+  background-color: rgb(255, 183, 50);
+  border-radius: 5px;
+  display: block;
+  margin: 20px 0 50px 0;
+  padding: 10px 0px;
+  width: 100%;
+  font-size: 18px;
+  animation: shining 1s infinite alternate;
+}
+@keyframes shining {
+  0% {
+    box-shadow: 0 0 5px orange;
+  }
+  100% {
+    box-shadow: 0 0 20px orange;
+  }
+}
+
+@media (min-width: 480px) {
+  .paymentButton {
+    font-size: 20px;
+    width: 343px;
+  }
+}
+
+.paymentButton:hover {
+  background-color: orange;
+}
+
+/*Warranty Container */
+.warrantyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.warrantyPic {
+  max-width: 300px;
+}
+
+.warrantyContext {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  max-width: 400px;
+}
+@media (min-width: 720px) {
+  .warrantyContainer {
+    flex-direction: row;
+  }
+  .warrantyContext {
+    text-align: left;
+  }
+}
+
+.warrantyContext p {
+  margin: 0;
+  font-size: 20px;
+}
+.warrantyContext p span {
+  font-weight: 900;
+}
+
+.warrantyTitle {
+  font-weight: 900;
 }
