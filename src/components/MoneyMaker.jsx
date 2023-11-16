@@ -338,7 +338,6 @@ function MoneyMaker() {
           style={{
             fontSize: "30px",
             color: "orange",
-            textShadow: "0 0 5px orange",
             marginTop: "50px",
           }}
         >
@@ -348,7 +347,6 @@ function MoneyMaker() {
           style={{
             fontSize: "25px",
             color: "white",
-            textShadow: "0 0 5px orange",
             marginBottom: "50px",
           }}
         >
@@ -373,7 +371,6 @@ function MoneyMaker() {
           style={{
             fontSize: "35px",
             color: "orange",
-            textShadow: "0 0 5px orange",
             letterSpacing: "2px",
             margin: "0",
             marginTop: "40px",
