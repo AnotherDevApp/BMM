@@ -6,7 +6,7 @@ import { FaPlayCircle } from "react-icons/fa";
 import "./styles.css";
 import Logo from "./Logo";
 import { Cards } from "./Cards";
-import Video from "/src/assets/video.mp4";
+// import Video from "/src/assets/videoBMM.mp4";
 import Portada from "/src/assets/portada.png";
 import { About } from "./About";
 import { Winners } from "./Winners";
@@ -298,14 +298,14 @@ function MoneyMaker() {
           >
             <div ref={progressBarRef} className="progress"></div>
           </div>
-          <video
+          {/* <video
             ref={videoRef}
             src={Video}
             preload="metadata"
             playsInline
             onClick={togglePlayPause}
             style={{ zIndex: 0 }}
-          ></video>
+          ></video> */}
           <button
             className={`fullscreen-button ${!isPlaying && "pausedVideo"}`}
             onClick={handleFullscreenToggle}
