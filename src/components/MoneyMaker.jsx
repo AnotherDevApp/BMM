@@ -246,7 +246,11 @@ function MoneyMaker() {
         <div className="video-container">
           {!isPlaying && lastVideoProgress === null && (
             <div className="playPauseContainer">
-              <button className="control-button" onClick={togglePlayPause}>
+              <button
+                className="control-button"
+                onClick={togglePlayPause}
+                title="control button"
+              >
                 {isPlaying ? (
                   <AiOutlinePauseCircle className="pause-play-Button" />
                 ) : (
@@ -305,6 +309,7 @@ function MoneyMaker() {
           <button
             className={`fullscreen-button ${!isPlaying && "pausedVideo"}`}
             onClick={handleFullscreenToggle}
+            title="full screen button"
           >
             {isFullscreen ? <BsFullscreenExit /> : <BsFullscreen />}
           </button>
